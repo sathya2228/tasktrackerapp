@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #f12711, #f5af19);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            color: #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h3 {
+            color: #ffcc00;
+        }
+        p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% for task in tasks %}
+            <div>
+                <h3>{{ task.title }}</h3>
+                <p>Due Date: {{ task.due_date }}</p>
+                <p>Remaining Time: {{ task.due_date|timesince }} ({{ task.due_date|timeuntil }})</p>
+                <p>Status: {{ task.get_progress_display }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
